@@ -22,7 +22,7 @@ services:
     restart: always
     container_name: redis_1
     sysctls:
-      - net.core.somaxconn=65535
+      - net.core.somaxconn=65536
     ports:
       - "6381:6381"
       - "16381:16381"
@@ -39,7 +39,7 @@ services:
     restart: always
     container_name: redis_2
     sysctls:
-      - net.core.somaxconn=65535
+      - net.core.somaxconn=65536
     networks:
       network_redis_cluster:
         ipv4_address: 173.18.0.12
@@ -56,7 +56,7 @@ services:
     restart: always
     container_name: redis_3
     sysctls:
-      - net.core.somaxconn=65535
+      - net.core.somaxconn=65536
     networks:
       network_redis_cluster:
         ipv4_address: 173.18.0.13
@@ -73,7 +73,7 @@ services:
     restart: always
     container_name: redis_4
     sysctls:
-      - net.core.somaxconn=65535
+      - net.core.somaxconn=65536
     networks:
       network_redis_cluster:
         ipv4_address: 173.18.0.14
@@ -90,7 +90,7 @@ services:
     restart: always
     container_name: redis_5
     sysctls:
-      - net.core.somaxconn=65535
+      - net.core.somaxconn=65536
     networks:
       network_redis_cluster:
         ipv4_address: 173.18.0.15
@@ -107,7 +107,7 @@ services:
     restart: always
     container_name: redis_6
     sysctls:
-      - net.core.somaxconn=65535
+      - net.core.somaxconn=65536
     networks:
       network_redis_cluster:
         ipv4_address: 173.18.0.16
@@ -123,7 +123,7 @@ services:
     image: redis:latest
     container_name: redis_cluster
     sysctls:
-      - net.core.somaxconn=65535
+      - net.core.somaxconn=65536
     networks:
       network_redis_cluster:
         ipv4_address: 173.18.0.17
