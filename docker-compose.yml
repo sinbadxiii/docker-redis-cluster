@@ -24,8 +24,8 @@ services:
     sysctls:
       - net.core.somaxconn=65536
     ports:
-      - "6381:6381"
-      - "16381:16381"
+      - "127.0.0.1:6381:6381"
+      - "127.0.0.1:16381:16381"
     networks:
       network_redis_cluster:
         ipv4_address: 173.18.0.11
@@ -44,8 +44,8 @@ services:
       network_redis_cluster:
         ipv4_address: 173.18.0.12
     ports:
-      - "6382:6382"
-      - "16382:16382"
+      - "127.0.0.1:6382:6382"
+      - "127.0.0.1:16382:16382"
     volumes:
       - redis_2_data:/data
       - ./redis_2/redis.conf:/usr/local/etc/redis/redis.conf
@@ -61,8 +61,8 @@ services:
       network_redis_cluster:
         ipv4_address: 173.18.0.13
     ports:
-      - "6383:6383"
-      - "16383:16383"
+      - "127.0.0.1:6383:6383"
+      - "127.0.0.1:16383:16383"
     volumes:
       - redis_3_data:/data
       - ./redis_3/redis.conf:/usr/local/etc/redis/redis.conf
@@ -78,8 +78,8 @@ services:
       network_redis_cluster:
         ipv4_address: 173.18.0.14
     ports:
-      - "6384:6384"
-      - "16384:16384"
+      - "127.0.0.1:6384:6384"
+      - "127.0.0.1:16384:16384"
     volumes:
       - redis_4_data:/data
       - ./redis_4/redis.conf:/usr/local/etc/redis/redis.conf
@@ -95,8 +95,8 @@ services:
       network_redis_cluster:
         ipv4_address: 173.18.0.15
     ports:
-      - "6385:6385"
-      - "16385:16385"
+      - "127.0.0.1:6385:6385"
+      - "127.0.0.1:16385:16385"
     volumes:
       - redis_5_data:/data
       - ./redis_5/redis.conf:/usr/local/etc/redis/redis.conf
@@ -112,8 +112,8 @@ services:
       network_redis_cluster:
         ipv4_address: 173.18.0.16
     ports:
-      - "6386:6386"
-      - "16386:16386"
+      - "127.0.0.1:6386:6386"
+      - "127.0.0.1:16386:16386"
     volumes:
       - redis_6_data:/data
       - ./redis_6/redis.conf:/usr/local/etc/redis/redis.conf
