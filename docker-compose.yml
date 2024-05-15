@@ -15,6 +15,10 @@ volumes:
   redis_4_data: {}
   redis_5_data: {}
   redis_6_data: {}
+  redis_7_data: {}
+  redis_8_data: {}
+  redis_9_data: {}
+  redis_10_data: {}
 
 services:
   redis_1:
@@ -119,6 +123,74 @@ services:
       - ./redis_6/redis.conf:/usr/local/etc/redis/redis.conf
     command: "redis-server /usr/local/etc/redis/redis.conf"
 
+  redis_7:
+    image: redis:latest
+    restart: always
+    container_name: redis_7
+    sysctls:
+      - net.core.somaxconn=65536
+    networks:
+      network_redis_cluster:
+        ipv4_address: 173.18.0.17
+    ports:
+      - "127.0.0.1:6387:6387"
+      - "127.0.0.1:16387:16387"
+    volumes:
+      - redis_7_data:/data
+      - ./redis_7/redis.conf:/usr/local/etc/redis/redis.conf
+    command: "redis-server /usr/local/etc/redis/redis.conf"
+
+  redis_8:
+    image: redis:latest
+    restart: always
+    container_name: redis_8
+    sysctls:
+      - net.core.somaxconn=65536
+    networks:
+      network_redis_cluster:
+        ipv4_address: 173.18.0.18
+    ports:
+      - "127.0.0.1:6388:6388"
+      - "127.0.0.1:16388:16388"
+    volumes:
+      - redis_8_data:/data
+      - ./redis_8/redis.conf:/usr/local/etc/redis/redis.conf
+    command: "redis-server /usr/local/etc/redis/redis.conf"
+
+  redis_9:
+    image: redis:latest
+    restart: always
+    container_name: redis_9
+    sysctls:
+      - net.core.somaxconn=65536
+    networks:
+      network_redis_cluster:
+        ipv4_address: 173.18.0.19
+    ports:
+      - "127.0.0.1:6389:6389"
+      - "127.0.0.1:16389:16389"
+    volumes:
+      - redis_9_data:/data
+      - ./redis_9/redis.conf:/usr/local/etc/redis/redis.conf
+    command: "redis-server /usr/local/etc/redis/redis.conf"
+
+  redis_10:
+    image: redis:latest
+    restart: always
+    container_name: redis_10
+    sysctls:
+      - net.core.somaxconn=65536
+    networks:
+      network_redis_cluster:
+        ipv4_address: 173.18.0.20
+    ports:
+      - "127.0.0.1:6390:6390"
+      - "127.0.0.1:16390:16390"
+    volumes:
+      - redis_10_data:/data
+      - ./redis_10/redis.conf:/usr/local/etc/redis/redis.conf
+    command: "redis-server /usr/local/etc/redis/redis.conf"
+
   redis_cluster:
     image: redis:latest
     container_name: redis_cluster
@@ -126,9 +198,20 @@ services:
       - net.core.somaxconn=65536
     networks:
       network_redis_cluster:
-        ipv4_address: 173.18.0.17
+        ipv4_address: 173.18.0.30
     tty: true
-    command: "redis-cli --cluster create 173.18.0.11:6381 173.18.0.12:6382 173.18.0.13:6383 173.18.0.14:6384 173.18.0.15:6385 173.18.0.16:6386 --cluster-replicas 1 --cluster-yes"
+    command: "redis-cli --cluster create 
+                173.18.0.11:6381 
+                173.18.0.12:6382 
+                173.18.0.13:6383 
+                173.18.0.14:6384 
+                173.18.0.15:6385 
+                173.18.0.16:6386 
+                173.18.0.17:6387 
+                173.18.0.18:6388 
+                173.18.0.19:6389 
+                173.18.0.20:6390 
+                --cluster-replicas 1 --cluster-yes"
     depends_on:
       - redis_1
       - redis_2
@@ -136,3 +219,7 @@ services:
       - redis_4
       - redis_5
       - redis_6
+      - redis_7
+      - redis_8
+      - redis_9
+      - redis_10
